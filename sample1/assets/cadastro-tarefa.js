@@ -8,7 +8,7 @@ $(document).ready(function () {
       return false
     }
 
-    salvaTarefaEmLocalStorage(tarefa, data)
+    //salvaTarefaEmLocalStorage(tarefa, data)
 
     e.preventDefault()
   })
