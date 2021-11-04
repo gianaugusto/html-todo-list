@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('#form-cadastro-tarefa').submit(function (e) {
-    let tarefa = $('tarefa').val()
-    let data = $('data').val()
+    let tarefa = $('#tarefa').val()
+    let data = $('#data').val()
 
     if (!tarefa || !data) {
       $('#alert-cadastro-tarefa-erro').show()
@@ -23,22 +23,31 @@ function salvaTarefaEmLocalStorage(tarefa, data) {
   const objetoTarefaParaSalvar = {
     id: new Date().getTime(),
     tarefa,
-    data
+    data,
+    status: 'PENDENTE'
   }
 
-  let tarefasCadastradasEmLocalStorage = JASON.parse(
-    getTarefasCadastradasEmLocalStorage()
+  let tarefasCadastradasEmLocalStorage = JSON.parse(
+    localStorage.getItem('tarefas-todo-list')
   )
 
-  if (tarefasCadastradasEmLocalStorage.length) {
+  if (
+    tarefasCadastradasEmLocalStorage &&
+    tarefasCadastradasEmLocalStorage.length
+  ) {
+    tarefasCadastradasEmLocalStorage.push(objetoTarefaParaSalvar)
+
+    localStorage.setItem(
+      'tarefas-todo-list',
+      JSON.stringify(tarefasCadastradasEmLocalStorage)
+    )
+  } else {
+    localStorage.setItem(
+      'tarefas-todo-list',
+      JSON.stringify([objetoTarefaParaSalvar])
+    )
   }
-
-  localStorage.setItem(
-    'tarefas-todo-list',
-    JSON.stringify(objetoTarefaParaSalvar)
-  )
-}
-
-function getTarefasCadastradasEmLocalStorage() {
-  return localStorage.getItem('tarefas-todo-list')
+  $('#alert-cadastro-tarefa-sucesso').show()
+  $('#tarefa').val('')
+  $('#data').val('')
 }

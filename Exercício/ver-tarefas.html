@@ -19,8 +19,8 @@
       <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">ToDo List</a>
-          <a class="navbar-brand" href="ver-tarefas.html"
-            >Ver todas as tarefas</a
+          <a class="navbar-brand" href="index.html"
+            >Cadastrar uma nova tarefa</a
           >
         </div>
       </nav>
@@ -28,49 +28,18 @@
 
     <main>
       <div class="container mt-5">
-        <h1>Cadastro da atividade</h1>
-
-        <div
-          class="alert alert-success alert-dismissible fade show hide-mensagem"
-          role="alert"
-          id="alert-cadastro-tarefa-sucesso"
-        >
-          Tarefa incluida com sucesso
-
-          <button type="button" class="btn-close" aria-label="Close"></button>
-        </div>
-        <div
-          class="alert alert-danger alert-dismissible fade show hide-mensagem"
-          role="alert"
-          id="alert-cadastro-tarefa-erro"
-        >
-          Preencha os campos
-
-          <button type="button" class="btn-close" aria-label="Close"></button>
-        </div>
-
-        <form class="mt-5" id="form-cadastro-tarefa">
-          <div class="mb-3">
-            <label for="tarefa" class="form-label">Tarefa</label>
-            <input
-              type="text"
-              class="form-control"
-              id="tarefa"
-              placeholder="Escreva sua tarefa"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="data" class="form-label">Data</label>
-            <input
-              type="text"
-              class="form-control date"
-              id="data"
-              placeholder="Data da tarefa"
-            />
-          </div>
-
-          <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
+        <h1>Lista de atividades</h1>
+        <table class="table table-striped mt-5" id="table-tarefas">
+          <thead>
+            <tr>
+              <th scope="col">Tarefa</th>
+              <th scope="col">Data</th>
+              <th scope="col">Status</th>
+              <th scope="col">Ação</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-tarefas"></tbody>
+        </table>
       </div>
     </main>
 
@@ -90,6 +59,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-    <script src="assets/cadastro-tarefa.js"></script>
+    <script src="assets/ver-tarefa.js"></script>
   </body>
 </html>
